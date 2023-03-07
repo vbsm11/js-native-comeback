@@ -110,3 +110,19 @@ const selfMadeFind = (array, func) => {
 
 console.log(selfMadeFind(students, st => st.name === 'Alex'))
 
+// self made slice
+
+const selfMadeSlice = (array, start, end) => {
+    const result = []
+    const endIt = end ?
+        end < array.length ? end : array.length
+        : array.length
+    for (let i = start; i < endIt; i++) {
+        result.push(array[i])
+    }
+    return result
+}
+
+console.log(selfMadeSlice(students, 0, 3))
+console.log(selfMadeSlice(students, 0))
+console.log(selfMadeSlice(students, 0, 6))
