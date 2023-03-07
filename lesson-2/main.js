@@ -126,3 +126,31 @@ const selfMadeSlice = (array, start, end) => {
 console.log(selfMadeSlice(students, 0, 3))
 console.log(selfMadeSlice(students, 0))
 console.log(selfMadeSlice(students, 0, 6))
+
+//
+
+console.log(Array.prototype)
+
+Array.prototype.hi = function () {
+    alert('hi!!')
+}
+
+const arr = []
+arr.hi()
+
+
+Array.prototype.selfMadeMap = function (func) {
+    const result = []
+
+    for (let i = 0; i < this.length; i++) {
+        const temp = func(this[i])
+        result[i] = temp
+    }
+    return result
+}
+
+arr.selfMadeMap()
+
+console.log(arr.__proto__ === Array.prototype)
+
+console.log(students.selfMadeMap(getName))
