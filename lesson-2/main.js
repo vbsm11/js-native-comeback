@@ -97,3 +97,16 @@ const selfMadeFilter = (array, func) => {
 }
 
 console.log(selfMadeFilter(students, st => st.scores >= 100))
+
+// self made find
+
+const selfMadeFind = (array, func) => {
+    for (let i = 0; i < array.length; i++) {
+        if (func(array[i]) === true) {
+            return array[i]
+        }
+    }
+}
+
+console.log(selfMadeFind(students, st => st.name === 'Alex'))
+
