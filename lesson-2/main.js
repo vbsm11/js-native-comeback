@@ -83,3 +83,17 @@ const addScoresForStudent = (obj) => {
 
 console.log(selfMadeMap(students,getName))
 console.log(selfMadeMap(students,addScoresForStudent))
+
+// self made filter
+
+const selfMadeFilter = (array, func) => {
+    const result = []
+    for (let i = 0; i < array.length; i++) {
+        if (func(array[i]) === true) {
+            result.push(array[i])
+        }
+    }
+    return result
+}
+
+console.log(selfMadeFilter(students, st => st.scores >= 100))
