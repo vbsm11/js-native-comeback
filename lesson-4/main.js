@@ -110,3 +110,13 @@ console.log(students.reduce((acc, el) => {
     delete acc[el.id].id
     return acc
 }, {}))
+
+
+// map => reduce
+
+console.log(students.map(s => ({...s, scores: s.scores + 20})))
+
+console.log(students.reduce((acc, el) => {
+    acc.push({...el, scores: el.scores + 20})
+    return acc
+}, []))
