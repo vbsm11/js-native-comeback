@@ -50,3 +50,6 @@ const nums = [2, 4, 6, 3, 5]
 console.log(nums.reduce((acc, el) => {
     return acc + el
 }, 0))
+
+console.log(nums.reduce((acc, el) => acc > el ? acc : el
+))
