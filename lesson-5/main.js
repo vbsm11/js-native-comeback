@@ -41,3 +41,61 @@ console.log(nums.sort((a, b) => b - a))
 // С методом sort часто используют метод reverse
 
 console.log(nums.reverse())
+
+// Работа с массивами объектов
+
+const students = [
+    {
+        name: 'Bob',
+        age: 22,
+        isMarried: true,
+        scores: 95
+    },
+    {
+        name: 'Alex',
+        age: 24,
+        isMarried: true,
+        scores: 89
+    },
+    {
+        name: 'Helge',
+        age: 24,
+        isMarried: true,
+        scores: 90
+    },
+    {
+        name: 'Nick',
+        age: 20,
+        isMarried: false,
+        scores: 120
+    },
+    {
+        name: 'John',
+        age: 19,
+        isMarried: false,
+        scores: 121
+    },
+    {
+        name: 'alex',
+        age: 22,
+        isMarried: true,
+        scores: 89
+    },
+]
+
+
+// Сортировка массива по строковым значениям
+
+const sortByName = (a,b) => {
+  if (a.name.toUpperCase() > b.name.toUpperCase()) {
+      return 1
+  }
+  else {
+      return -1
+  }
+}
+
+// console.log(students.sort(sortByName))
+
+console.log(students.sort((a,b) => a.name.localeCompare(b.name)))
+// localeCompare производит сравнение строк без учета регистра и возвращает 1 или -1
