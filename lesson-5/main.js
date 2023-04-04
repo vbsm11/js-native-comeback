@@ -112,9 +112,10 @@ const bubbleFunc = (arr) => {
         let isSorted = true
         for (let i = 0; i < arr.length - 1 - j; i++) {
             if (arr[i] > arr[i + 1]) {
-                let a = arr[i]
-                arr[i] = arr[i + 1]
-                arr[i + 1] = a
+                // let a = arr[i]
+                // arr[i] = arr[i + 1]
+                // arr[i + 1] = a
+                [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]
                 isSorted = false
             }
         }
