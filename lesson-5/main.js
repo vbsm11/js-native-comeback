@@ -25,12 +25,11 @@ console.log(nums.sort())
 // 6. Ф-ция сравнения должна вернуть число > или < 0
 
 const compFunc = (a, b) => { // по возрастанию
-  if (a > b) { // надо поменять местами
-      return 10
-  }
-  else {
-      return -1
-  }
+    if (a > b) { // надо поменять местами
+        return 10
+    } else {
+        return -1
+    }
 }
 
 console.log(nums.sort(compFunc))
@@ -86,21 +85,39 @@ const students = [
 
 // Сортировка массива по строковым значениям
 
-const sortByName = (a,b) => {
-  if (a.name.toUpperCase() > b.name.toUpperCase()) {
-      return 1
-  }
-  else {
-      return -1
-  }
+const sortByName = (a, b) => {
+    if (a.name.toUpperCase() > b.name.toUpperCase()) {
+        return 1
+    } else {
+        return -1
+    }
 }
 
 // console.log(students.sort(sortByName))
 
-console.log(students.sort((a,b) => a.name.localeCompare(b.name)))
+console.log(students.sort((a, b) => a.name.localeCompare(b.name)))
 // localeCompare производит сравнение строк без учета регистра и возвращает 1 или -1
 
 // Сортировка массива объектов по числовым значениям
 
-console.log(students.sort((a,b) => a.age - b.age))
+console.log(students.sort((a, b) => a.age - b.age))
 // console.log(students.sort((a,b) => b.scores - b.scores))
+
+// BUBBLE SORT
+
+const nums2 = [100, 333, 999, 77, -3]
+
+const bubbleFunc = (arr) => {
+    for (let j = 0; j < arr.length; j++) {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > arr[i + 1]) {
+                let a = arr[i]
+                arr[i] = arr[i + 1]
+                arr[i + 1] = a
+            }
+        }
+    }
+    return arr
+}
+
+console.log(bubbleFunc(nums2))
