@@ -108,14 +108,17 @@ console.log(students.sort((a, b) => a.age - b.age))
 const nums2 = [100, 333, 999, 77, -3]
 
 const bubbleFunc = (arr) => {
-    for (let j = 0; j < arr.length; j++) {
-        for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - 1; j++) {
+        let isSorted = true
+        for (let i = 0; i < arr.length - 1 - j; i++) {
             if (arr[i] > arr[i + 1]) {
                 let a = arr[i]
                 arr[i] = arr[i + 1]
                 arr[i + 1] = a
+                isSorted = false
             }
         }
+        if (isSorted) break
     }
     return arr
 }
