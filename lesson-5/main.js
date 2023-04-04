@@ -99,3 +99,8 @@ const sortByName = (a,b) => {
 
 console.log(students.sort((a,b) => a.name.localeCompare(b.name)))
 // localeCompare производит сравнение строк без учета регистра и возвращает 1 или -1
+
+// Сортировка массива объектов по числовым значениям
+
+console.log(students.sort((a,b) => a.age - b.age))
+// console.log(students.sort((a,b) => b.scores - b.scores))
