@@ -103,6 +103,18 @@ console.log(students.sort((a, b) => a.name.localeCompare(b.name)))
 console.log(students.sort((a, b) => a.age - b.age))
 // console.log(students.sort((a,b) => b.scores - b.scores))
 
+// Сортировка массива объектов по нескольким параметрам
+
+console.log(students.sort((a, b) => {
+    if (a.age > b.age) {
+        return 1
+    } else if (a.age < b.age) {
+        return -1
+    } else if (a.age === b.age) {
+        a.name.localeCompare(b.name)
+    }
+}))
+
 // BUBBLE SORT
 
 const nums2 = [100, 333, 999, 77, -3]
