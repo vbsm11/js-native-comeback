@@ -115,7 +115,7 @@ console.log(trueStudents)
 
 //8. Nick женился. Выполните соответствующие преобразование массива
 // students (map)
-let studentsWithMarriedNick;
+let studentsWithMarriedNick = deepCopyStudents.map(s => s.name === 'Nick'? {...s, isMarried: true}: s);
 console.log(studentsWithMarriedNick)
 
 // Внесите  следующие изменения в объект superUser:
