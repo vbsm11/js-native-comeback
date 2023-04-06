@@ -120,7 +120,8 @@ console.log(studentsWithMarriedNick)
 
 // Внесите  следующие изменения в объект superUser:
 //9.Удалите объект с id=1 из массива  friends
-let superUserCorrect1;
+let superUserCorrect1 = {...superUser, friends: superUser.friends.filter(f => f.id !== 1)};
+console.log(superUserCorrect1)
 
 //10. поменяйте объекту с id=2 из массива  friends значение св-ва name на
 // "Donald"
