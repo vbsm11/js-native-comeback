@@ -175,8 +175,21 @@ console.log(addFriends(students));
 // getBestStudents(students, 3) => [{...}, {...}, {...}]
 // getBestStudents(students, 10) => [{}, {}, ...., {}, null, null, null, null ]
 
+const getBestStudents = (students, number) => {
+  let sortStudents = [...students].sort((a, b) => b.scores - a.scores)
+    if (number) {
+        if (number > students.length) {
+            return 'Requested number of best students must be less than or equal to the total number of students'
+        }
+      return sortStudents.slice(0, number)
+  } else {
+      return sortStudents[0]
+  }
+}
 
-
+console.log(getBestStudents(students))
+console.log(getBestStudents(students, 3))
+console.log(getBestStudents(students, 10))
 
 
 
