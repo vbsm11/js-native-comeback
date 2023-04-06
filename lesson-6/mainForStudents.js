@@ -80,7 +80,10 @@ const superUser = {
 // NB!!! Все преобразования выполняем иммьютабельно, если не сказано иное
 
 //1. Создайте полную (глубокую) копию объекта user
-let deepCopyUser;
+let deepCopyUser = {
+    ...user,
+    friends: [...user.friends]
+};
 
 //2. Создайте полную (глубокую) массива students
 let deepCopyStudents;
