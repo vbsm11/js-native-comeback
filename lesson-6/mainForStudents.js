@@ -84,9 +84,11 @@ let deepCopyUser = {
     ...user,
     friends: [...user.friends]
 };
+console.log(deepCopyUser.friends === user.friends)
 
 //2. Создайте полную (глубокую) массива students
-let deepCopyStudents;
+let deepCopyStudents = students.map(s => ({...s}));
+console.log(deepCopyStudents[3] === students[3])
 
 //3. Создайте полную (глубокую) копию объекта superUser
 let deepCopySuperUser;
