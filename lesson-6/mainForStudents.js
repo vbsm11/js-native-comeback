@@ -164,7 +164,7 @@ console.log(scoresSum)
 // значением которого является массив имён всех остальных студентов из массива students,
 // за исключением собственного имени студента. Т.е. в друзьях у Боба Боба быть не должно.
 const addFriends = (students) => {
-   //..............................
+   return students.map(s => ({...s, friends: students.map(s1 => s1.name).filter(n => n !== s.name)}))
 }
 console.log(addFriends(students));
 
