@@ -102,7 +102,7 @@ let sortedByScores = deepCopyStudents.sort((a, b) => a.scores - b.scores);
 console.log(sortedByScores);
 
 //5. Сформируйте массив студентов, у которых 100 и более баллов (filter)
-let bestStudents;
+let bestStudents = deepCopyStudents.filter(s => s.scores >= 100);
 console.log(bestStudents)
 
 //6. Сформируйте массив имён студентов (map)
