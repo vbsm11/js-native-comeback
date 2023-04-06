@@ -147,7 +147,7 @@ let bestStudent;
 console.log(bestStudent)
 
 //13. Найдите сумму баллов всех студентов (reduce)*
-let scoresSum;
+let scoresSum = students.reduce((acc, el) => acc + el.scores, 0);
 console.log(scoresSum)
 
 // 14. Д.З.:
