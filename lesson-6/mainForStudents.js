@@ -110,7 +110,7 @@ let studentsNames = deepCopyStudents.map(s => s.name);
 console.log(studentsNames)
 
 //7. Добавьте всем студентам свойство "isStudent" со значением true (map)
-let trueStudents;
+let trueStudents = deepCopyStudents.map(s => ({...s, isStudent: true}));
 console.log(trueStudents)
 
 //8. Nick женился. Выполните соответствующие преобразование массива
