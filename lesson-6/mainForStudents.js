@@ -125,7 +125,8 @@ console.log(superUserCorrect1)
 
 //10. поменяйте объекту с id=2 из массива  friends значение св-ва name на
 // "Donald"
-let superUserCorrect2;
+let superUserCorrect2 = {...superUser, friends: superUser.friends.map(f => f.id === 2? {...f, name: 'Donald'}: f)};
+console.log(superUserCorrect2)
 
 //11. добавьте в список друзей нового друга
 const newFriend = {
@@ -135,7 +136,8 @@ const newFriend = {
     isMarried: false,
     scores: 99
 }
-let superUserCorrect3;
+let superUserCorrect3 = {...superUser, friends: [...superUser.friends, newFriend]};
+console.log(superUserCorrect3)
 
 // И поднимаем руку!!!!
 
