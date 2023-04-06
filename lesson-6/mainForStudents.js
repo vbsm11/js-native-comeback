@@ -98,11 +98,11 @@ let deepCopySuperUser = {
 console.log(superUser.friends[2] === deepCopySuperUser.friends[2])
 
 //4. Отсортируйте deepCopyStudents по успеваемости (лучший идёт первым)(sort)
-let sortedByScores;
+let sortedByScores = deepCopyStudents.sort((a, b) => a.scores - b.scores);
 console.log(sortedByScores);
 
 //5. Сформируйте массив студентов, у которых 100 и более баллов (filter)
-let  bestStudents;
+let bestStudents;
 console.log(bestStudents)
 
 //6. Сформируйте массив имён студентов (map)
