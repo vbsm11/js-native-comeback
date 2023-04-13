@@ -71,3 +71,18 @@ console.log(setUpperCase("всем стУдентам инкуБатора Же�
 // isIncludes("Incubator", "inbba") => true
 // isIncludes("Incubator", "inba") => true
 // isIncludes("Incubator", "Incubatorrr")=> true
+
+const isIncludes = (str, st) => {
+  let arr = st.split('')
+    let is = true
+    for (let i = 0; i < arr.length; i++) {
+        if (!str.toLowerCase().includes(arr[i].toLowerCase())) {
+            is = false;
+            break
+        }
+    }
+    return is
+}
+
+console.log(isIncludes("Incubator", "table"))
+console.log(isIncludes("Incubator", "inbba"))
