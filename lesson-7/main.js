@@ -14,6 +14,13 @@ console.log(repeatString("yo", 3, " "))
 // checkStart("Incubator", "yo") => false
 // str.startWith() slice indexOF
 
+const checkStart = (str, st) => {
+    return str.slice(0, st.length).toUpperCase().startsWith(st.toUpperCase())
+}
+
+console.log(checkStart("Incubator", "inc"))
+console.log(checkStart("Incubator", "yo"))
+
 //3. Реализуйте функцию, которая принимает параметром строку и число (количество символов), а возвращает строку из параметров, обрезанную до указанного количества символов и завершает её многоточием.
 //truncateString("Всем студентам инкубатора желаю удачи!", 10) => "Всем студе..."
 
