@@ -3,6 +3,12 @@
 // repeatString("yo", 3, ",") => "yo,yo,yo"
 // for или str.repeat()
 
+const repeatString = (str, count, sep) => {
+    return (str + sep).repeat(count).trim()
+}
+
+console.log(repeatString("yo", 3, " "))
+
 //2. Реализуйте функцию, которая принимает параметром сторку и подстроку, а возвращает true, если строка начинается с указанной подстроки, в противном случае - false. Регистр не учитывается.
 // checkStart("Incubator", "inc") => true
 // checkStart("Incubator", "yo") => false
