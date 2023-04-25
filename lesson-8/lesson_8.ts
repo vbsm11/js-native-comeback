@@ -53,9 +53,7 @@ export const isEvenIndexSumGreater = (arr: Array<number>): boolean => {
 
 
 export function getSquarePositiveIntegers(array: Array<number>): Array<number> {
-    //...здесь пишем код.
-    // В return стоит "заглушка", чтоб typescript не ругался
-    return []
+    return array.filter(a => (a % 2) === 0 && a > 0).map(b => b * b)
 }
 
 // 6. Функция принимает параметром целое не отрицательное число N и возвращает сумму всех чисел от 0 до N включительно
