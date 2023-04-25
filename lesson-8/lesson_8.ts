@@ -60,9 +60,7 @@ export function getSquarePositiveIntegers(array: Array<number>): Array<number> {
 // Попробуйте реализовать функцию без использования перебирающих методов.
 
 export function sumFirstNumbers(N: number): number {
-    //...здесь пишем код.
-    // В return стоит "заглушка", чтоб typescript не ругался
-    return 0
+    return Array.from({ length: N }, (_, i) => ++i).reduce((acc, el) => acc + el)
 }
 
 // ...и "лапку" вверх!!!!
