@@ -79,6 +79,7 @@ const counter = () => { // globalLE {counter: Function}
 const count1 = counter() // globalLE {counter: Function, count1: Function} - создается counterLE1 {count: 0}
 const count2 = counter() // globalLE {counter: Function, count1: Function, count2: Function} - создается еще раз counterLE2 {count: 0}
 // counterLE1 !== counterLE2
+// после каждого вызова функции создается новое лексическое окружение
 
 count1() // 1
 count1() // 2
