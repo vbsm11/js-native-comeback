@@ -70,19 +70,25 @@ const counter = () => { // globalLE {counter: Function}
     // counterLE {}
     let count = 0 // counterLE {count: 0}
     return () => {
-        // environment --> counterLE
-        // count1LE {}
+        // environment --> counterLE1
+        // environment --> counterLE2
         console.log(++count)
     }
 }
 
-const count1 = counter() // globalLE {counter: Function, count1: Function}
+const count1 = counter() // globalLE {counter: Function, count1: Function} - создается counterLE1 {count: 0}
+const count2 = counter() // globalLE {counter: Function, count1: Function, count2: Function} - создается еще раз counterLE2 {count: 0}
+// counterLE1 !== counterLE2
 
 count1() // 1
 count1() // 2
 count1() // 3
+
+count2() // 1
+count2() // 2
+count2() // 3
 // замыкание - это способность функции запомнить лексическое окружение, в котором она была создана
-// окружение сounterLE после выполнения ф-ции count1 не удаляется из памяти, так как на значение из этого окружения есть "ссылка" в дочерней функции
+// окружение counterLE после выполнения ф-ции count1 не удаляется из памяти, так как на значение из этого окружения есть "ссылка" в дочерней функции
 // окружение count1LE удаляется из памяти, так как нигде не используется
 
 // ++count сначала увеличивает значение, потом возвращает его; count++ - наоборот
