@@ -6,14 +6,15 @@ const a = 5
 // (в globalLE ссылка outer на внешние LE равна null)
 
 
-const car = 'bmw'
+let car = 'bmw' // {car: 'bmw'}
 
 const startEngine = () => {
     console.log(`start ${car}`)
 }
+car = 'audi' // {car: 'audi'}
 
 startEngine()
-//*************************************************
+// в консоли будет start audi
 
 
 // {foo1: Function, a1: undefined}
