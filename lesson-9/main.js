@@ -19,8 +19,8 @@ startEngine()
 
 // {foo1: Function, a1: undefined}
 foo1()
-foo2()
-foo3()
+// foo2() -> error
+// foo3() -> error
 
 var a1 = '1' // {foo1: Function, a1: '1'}
 const a2 = '2' // {foo1: Function, a1: '1', a2: '2'}
@@ -40,3 +40,27 @@ const foo3 = function () { // {foo1: Function, a1: '1', a2: '2', a3: '3', foo2: 
 // при объявлении ф-ции через function declaration(foo1) мы можем ее вызвать в коде до ее объявления, она сразу записывается в Global lexical environment
 // при обявлении ф-ции через function expression (стрелочная foo2 и foo3) такой возможности не существует, она записывается в Global lexical environment только после объявления
 // при обявлении переменной через var в Global lexical environment сразу записывается свойство со значением undefined
+
+
+let phone = 'iphone' // {phone: 'iphone'}
+
+const logPhone = () => { // globalLE {phone: 'iphone', logPhone: Function}
+    // Environment --> globalLE
+    // logPhoneLE {}
+    const phone = 'samsung' // logPhoneLE {phone: 'samsung'}
+    const foo = () => { // logPhoneLE {phone: 'samsung', foo: Function}
+        // fooLE {}
+        console.log(`phone ${phone}`)
+    }
+    foo()
+}
+
+logPhone()
+// также существуют функциональные (функции) и блочные (if else, for, switch case и тд) лексические окружения
+// функциональное лексическое окружение создается только в момент вызова функции
+// внутри ф-ции переменная сначала ищется внутри своего LE, затем у родителя и так до globalLE!!!
+
+const obj = {} // globalLE {...obj: {}}
+// objLE - не существует
+// объект лексического окружения не создает!!!
+
