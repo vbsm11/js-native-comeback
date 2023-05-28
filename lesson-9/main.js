@@ -76,7 +76,7 @@ const counter = () => { // globalLE {counter: Function}
     }
 }
 
-const count1 = counter()
+const count1 = counter() // globalLE {counter: Function, count1: Function}
 
 count1() // 1
 count1() // 2
