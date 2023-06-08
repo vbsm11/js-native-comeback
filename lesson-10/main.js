@@ -27,8 +27,8 @@
 const server = {
     getData() {
         return new Promise((res, rej) => {
-            const data = ['book1', 'book2', 'book3']
-            setTimeout(() => {
+            const data = ['book1', 'book2', 'book3'] // данные как будто берем с сервера
+            setTimeout(() => { // setTimeOut имитирует запрос на сервер
                 res('Some books list') // приходит в PromiseResult
             }, 1000)
         })
