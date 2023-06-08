@@ -101,6 +101,7 @@ const PromiseExample = (executor) => {
     executor(resolve, reject)
 } // примерно так выглядит promise под капотом
 // у promise может быть 3 состояния (PromiseState) pending || fulfilled || rejected
+// fulfilled способствует вызову then, rejected - вызову catch
 
 
 
@@ -130,5 +131,21 @@ const myPromise = new Promise((res, rej) => {
     }
 }) // самая простая реализация промиса
 console.log(myPromise)
+
+
+
+
+////////////////////////////////////////////// задача для самостоятельной работы
+// написать ф-цию delay, которая вернет промис и через 2 секунды выдаст resolve
+
+const delay = (time) => {
+    return new Promise((res, rej) => {
+        setTimeout(() => {
+            res()
+        }, time)
+    })
+}
+
+delay(2000).then(() => console.log('resolve'))
 
 
