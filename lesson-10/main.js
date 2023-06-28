@@ -56,15 +56,15 @@ const server = {
     }
 }
 
-//let pr = server.getData()
-// console.log(pr)
+let pr = server.getData()
+console.log(pr)
 
-// pr.then((data) => { // каждый promise.then при отработке resolve возвращает новый promise (можем создавать цепочки промисов)
-//console.log(data)
-// })
-// pr.catch((err) => {
-//console.log('ERROR', err)
-// }) // catch срабатывает только при срабатывании rejected (при ошибке)
+pr.then((data) => { // каждый promise.then при отработке resolve возвращает новый promise (можем создавать цепочки промисов)
+console.log(data)
+})
+pr.catch((err) => {
+console.log('ERROR', err)
+}) // catch срабатывает только при срабатывании rejected (при ошибке)
 
 server.getData() // ПРИМЕР ЦЕПОЧКИ ПРОМИСОВ, В СЛЕДУЮЩИЙ THEN ПРИХОДИТ ТО, ЧТО БЫЛО В РЕТУРНЕ ПРЕДЫДУЩЕГО, ПОЭТОМУ ВО ВТОРОЙ THEN ПРИДЕТ 3
     .then((data) => {
