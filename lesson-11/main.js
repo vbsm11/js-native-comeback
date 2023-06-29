@@ -109,7 +109,7 @@ const func = async () => {
     // setIsLoading(true)
     try {
         console.log('start google request')
-        const dataFromGoogle = await fetch('https://google.com/?query=js')
+        const dataFromGoogle = await fetch('https://google.com/?query=js') // если в каком-то из этих запросов будет ошибка, выполнение функции прерывается и мы попадаем в catch
         console.log(dataFromGoogle)
 
         console.log('start yahoo request')
