@@ -77,3 +77,15 @@ Promise.race([promise1, promise2, promise3])
     console.log('ERROR', err) // ошибку от неправильного url в запросе мы получим быстрее, чем ответ от любого другого запроса, в таком случае перейдем в catch
     // в случае, если какой-то запрос сработает быстрее ошибки, мы перейдем в then
 })
+
+
+// Promise.allSettled возвращает массив обектов, в каждом объекте есть свойство статус
+// если статус fulfilled, то в объекте будет свойство value с данными от запроса
+// если статус rejected - свойство reason с причиной ошибки
+
+Promise.allSettled([promise1, promise2, promise3])
+    .then((data) => {
+        console.log(data)
+    // }).catch((err) => { catch в Promise.allSettled не отрабатывает НИКОГДА => это метод всегда резолвится
+    // console.log('ERROR', err)
+})
