@@ -45,3 +45,25 @@ fetch('https://google.com/?query=js')
     .then(() => {
         console.log('Response from duckduckgo')
     })
+
+
+
+// СТАТИЧЕСКИЕ МЕТОДЫ КЛАССА PROMISE
+// all || race || allSettled || any
+
+// метод all нужен тогда, когда нам нужно, чтобы все (три) промисы зарезолвились, и только после этого использовать данные из них
+
+const promise1 = fetch('https://google.com/?query=js')
+const promise2 = fetch('https://yahoo.com/?query=js')
+const promise3 = fetch('https://duckduckgo.com/?query=js')
+
+// Promise.all(...) возвращает промис у которого в data будет массив данных от промисов в том порядке, в котором они были переданы в атрибуты Promise.all
+const bigPromise = Promise.all([promise1, promise2, promise3])
+
+bigPromise.then((data) => {
+    console.log(data[0]) // data от promise1
+    console.log(data[1]) // data от promise2
+    console.log(data[2]) // data от promise3
+}).catch((err) => {
+    console.log('ERROR', err) // если ошибка хотя бы в одном промисе, Promise.all выдает ошибку (мы попадаем в catch)
+})
