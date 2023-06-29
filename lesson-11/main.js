@@ -2,38 +2,37 @@ import fetch from "node-fetch";
 
 
 // ПОВТОРЕНИЕ ПРЕДЫДУЩЕГО УРОКА С ДОБАВЛЕНИЕМ ЗАПРОСА К GOOGLE
-const server = {
-    getData() {
-        return new Promise((res, rej) => {
-            setTimeout(() => {
-                res('Promise resolved') // приходит в PromiseResult
-                // rej('oops, something wen wrong')
-            }, 1000)
-        })
-    }
-}
-
-const pr = server.getData()
-console.log(pr)
-
-pr.then((data) => { // каждый promise.then при отработке resolve возвращает новый promise (можем создавать цепочки промисов)
-    console.log('data', data)
-    return fetch('https://google.com/?query=js')
-})
-    .then((dataFromGoogle) => {
-        console.log('dataFromGoogle', dataFromGoogle)
-    })
-pr.catch((err) => {
-    console.log('ERROR', err)
-}) // catch срабатывает только при срабатывании rejected (при ошибке)
-
+// const server = {
+//     getData() {
+//         return new Promise((res, rej) => {
+//             setTimeout(() => {
+//                 res('Promise resolved') // приходит в PromiseResult
+//                 // rej('oops, something wen wrong')
+//             }, 1000)
+//         })
+//     }
+// }
+//
+// const pr = server.getData()
+// console.log(pr)
+//
+// pr.then((data) => { // каждый promise.then при отработке resolve возвращает новый promise (можем создавать цепочки промисов)
+//     console.log('data', data)
+//     return fetch('https://google.com/?query=js')
+// })
+//     .then((dataFromGoogle) => {
+//         console.log('dataFromGoogle', dataFromGoogle)
+//     })
+// pr.catch((err) => {
+//     console.log('ERROR', err)
+// }) // catch срабатывает только при срабатывании rejected (при ошибке)
 
 
 // ПРИМЕР ЦЕПОЧКИ ПРОМИСОВ СО СРАБАТЫВАЮЩИМИ ПОСЛЕДОВАТЕЛЬНО Ф-ЦИЯМИ В THEN
 // ДОБИВАЕМСЯ ЭТОГО ПРИ ПОМОЩИ RETURN ПРОМИСА (FETCH) В КАЖДОМ THEN
 fetch('https://google.com/?query=js')
     .then(() => {
-    console.log('Response from google')
+        console.log('Response from google')
     })
     .then(() => {
         return fetch('https://yahoo.com/?query=js')
@@ -45,7 +44,6 @@ fetch('https://google.com/?query=js')
     .then(() => {
         console.log('Response from duckduckgo')
     })
-
 
 
 // СТАТИЧЕСКИЕ МЕТОДЫ КЛАССА PROMISE
@@ -86,10 +84,9 @@ Promise.race([promise1, promise2, promise3])
 Promise.allSettled([promise1, promise2, promise3])
     .then((data) => {
         console.log(data)
-    // }).catch((err) => { catch в Promise.allSettled не отрабатывает НИКОГДА => это метод всегда резолвится
-    // console.log('ERROR', err)
-})
-
+        // }).catch((err) => { catch в Promise.allSettled не отрабатывает НИКОГДА => это метод всегда резолвится
+        // console.log('ERROR', err)
+    })
 
 
 // Promise.any вернет первый зарезолвившийся промис, если хотя бы один промис зарезолвился
@@ -101,3 +98,35 @@ Promise.any([promise1, promise2, promise3])
     }).catch((err) => {
     console.log('ERROR', err) // здесь выведется объект с массивом ошибок, если во всех промисах будут ошибки
 })
+
+
+// ASYNC, AWAIT
+// async указывает на то, что функция будет выполняться асинхронно
+// await указывает на то, что js сначала дождется ответа от запроса, и только за тем запишет этот ответ в переменную
+// без await в переменную dataFromGoogle мы бы записали промис
+
+const func = async () => {
+    // setIsLoading(true)
+    try {
+        console.log('start google request')
+        const dataFromGoogle = await fetch('https://google.com/?query=js')
+        console.log(dataFromGoogle)
+
+        console.log('start yahoo request')
+        const dataFromYahoo = await fetch('https://yahoo.com/?query=js') // последующие fetch будут запускаться только после того, как отработал предыдущий и записался в переменную
+        console.log(dataFromYahoo)
+
+        console.log('start duckduckgo request')
+        const dataFromDuckduckgo = await fetch('https://duckduckgo.com/?query=js')
+        console.log(dataFromDuckduckgo)
+    }
+    catch (err) {
+        console.log('ERROR', err) // минусы такого подхода, что мы не можем отработать с отдельной ошибкой
+    }
+    finally
+    {
+        // setIsLoading(false)
+    }
+}
+
+console.log('func', func()) // функция func написанная при помощи async возвращает промис
