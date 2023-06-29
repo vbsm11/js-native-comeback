@@ -89,3 +89,15 @@ Promise.allSettled([promise1, promise2, promise3])
     // }).catch((err) => { catch в Promise.allSettled не отрабатывает НИКОГДА => это метод всегда резолвится
     // console.log('ERROR', err)
 })
+
+
+
+// Promise.any вернет первый зарезолвившийся промис, если хотя бы один промис зарезолвился
+// если все промисы зареджектились, то в catch он вернет объект c массивом ошибок
+
+Promise.any([promise1, promise2, promise3])
+    .then((data) => {
+        console.log('data', data)
+    }).catch((err) => {
+    console.log('ERROR', err) // здесь выведется объект с массивом ошибок, если во всех промисах будут ошибки
+})
