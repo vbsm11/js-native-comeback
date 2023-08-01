@@ -36,7 +36,6 @@
 // даже если бы в setTimeOut timeOut был бы 0, console.log в нем все равно бы сработал последним, так как все асинхронные операции в js (колбэки, запросы на сервер) после выполнения с помощью web apis отправляются в очередь, а уже из этой очереди в stack вызова
 
 
-
 // console.log('a')
 //
 // setTimeout(() => {
@@ -49,7 +48,6 @@
 //
 // console.log('b')
 // порядок срабатывания - 'a', 'b', 'timeout2', 'timeout1'
-
 
 
 // setTimeout(() => {
@@ -82,7 +80,6 @@
 // в целом, eventloop - это некий цикл, который следит за всеми этими очередями
 
 
-
 // function a() {
 //     console.log('a')
 // }
@@ -109,20 +106,39 @@
 // порядок - 'a', 'create promise', 'b', 'c', 'timeout'
 // создание промиса - СИНХРОННАЯ ФУНКЦИЯ, поэтому она сразу попадет в стэк выполнения
 
-setTimeout(function timer() {
-    console.log('timeout1')
-}, 5000)
 
-setTimeout(function timer() {
-    console.log('timeout2')
-}, 3000)
-
-setTimeout(function timer() {
-    console.log('timeout3')
-}, 1000)
-
-setTimeout(function timer() {
-    console.log('timeout4')
-}, 1000)
+// setTimeout(function timer() {
+//     console.log('timeout1')
+// }, 5000)
+//
+// setTimeout(function timer() {
+//     console.log('timeout2')
+// }, 3000)
+//
+// setTimeout(function timer() {
+//     console.log('timeout3')
+// }, 1000)
+//
+// setTimeout(function timer() {
+//     console.log('timeout4')
+// }, 1000)
 // порядок 'timeout3', 'timeout4', 'timeout2', 'timeout1'
 // так как web api отдает в очередь setTimeout только после отсчета самого таймаута, то они будут срабатывать он меньшего таймаута к большему (при равных таймаутах - по порядку объявления в коде)
+
+
+setTimeout(function timer() {
+    console.log(1)
+}, 0)
+
+new Promise(function (res, rej) {
+    console.log(2)
+    res()
+}).then(() => {
+    console.log(3)
+})
+
+console.log(4)
+// порядок 2 4 3 1
+// создание промиса и логирование - синхронные функции - вызовутся по порядку
+// setTimeOut и then сначала отправятся на web apis, откуда в свои очереди
+// в очередях первым будет then, т.к это микротаска (срабатывание промиса)
