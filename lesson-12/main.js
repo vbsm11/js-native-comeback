@@ -105,6 +105,7 @@
 // c()
 // порядок - 'a', 'create promise', 'b', 'c', 'timeout'
 // создание промиса - СИНХРОННАЯ ФУНКЦИЯ, поэтому она сразу попадет в стэк выполнения
+// функция ASYNC работает аналогично new Promise, AWAIT - аналогично res или then
 
 
 // setTimeout(function timer() {
