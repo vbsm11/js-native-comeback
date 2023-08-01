@@ -83,28 +83,46 @@
 
 
 
-function a() {
-    console.log('a')
-}
-
-function b() {
-    console.log('b')
-}
-
-function c() {
-    console.log('c')
-}
-
-a()
-
-new Promise(function (res, rej) {
-    console.log('create promise')
-    setTimeout(function timer() {
-        res(console.log('timeout'))
-    }, 1000)
-})
-
-b()
-c()
+// function a() {
+//     console.log('a')
+// }
+//
+// function b() {
+//     console.log('b')
+// }
+//
+// function c() {
+//     console.log('c')
+// }
+//
+// a()
+//
+// new Promise(function (res, rej) {
+//     console.log('create promise')
+//     setTimeout(function timer() {
+//         res(console.log('timeout'))
+//     }, 1000)
+// })
+//
+// b()
+// c()
 // порядок - 'a', 'create promise', 'b', 'c', 'timeout'
 // создание промиса - СИНХРОННАЯ ФУНКЦИЯ, поэтому она сразу попадет в стэк выполнения
+
+setTimeout(function timer() {
+    console.log('timeout1')
+}, 5000)
+
+setTimeout(function timer() {
+    console.log('timeout2')
+}, 3000)
+
+setTimeout(function timer() {
+    console.log('timeout3')
+}, 1000)
+
+setTimeout(function timer() {
+    console.log('timeout4')
+}, 1000)
+// порядок 'timeout3', 'timeout4', 'timeout2', 'timeout1'
+// так как web api отдает в очередь setTimeout только после отсчета самого таймаута, то они будут срабатывать он меньшего таймаута к большему (при равных таймаутах - по порядку объявления в коде)
