@@ -12,21 +12,21 @@
 // порядок срабатывания - 'a', 'b', 'c', 'timeout'
 
 
-function a() {
-    b()
-    console.log('a')
-}
-
-function b() {
-    c()
-    console.log('b')
-}
-
-function c() {
-    console.log('c')
-}
-
-a()
+// function a() {
+//     b()
+//     console.log('a')
+// }
+//
+// function b() {
+//     c()
+//     console.log('b')
+// }
+//
+// function c() {
+//     console.log('c')
+// }
+//
+// a()
 // порядок вывода - 'c', 'b', 'a'
 // стэк вызова работает по принципу 'последний пришел первый ушел' (так же принцип называется stack, lifo) в случае если, например, одна ф-ция вызывает другую, другая третью и тд
 // в js только один стэк выполнения
@@ -82,3 +82,29 @@ a()
 // в целом, eventloop - это некий цикл, который следит за всеми этими очередями
 
 
+
+function a() {
+    console.log('a')
+}
+
+function b() {
+    console.log('b')
+}
+
+function c() {
+    console.log('c')
+}
+
+a()
+
+new Promise(function (res, rej) {
+    console.log('create promise')
+    setTimeout(function timer() {
+        res(console.log('timeout'))
+    }, 1000)
+})
+
+b()
+c()
+// порядок - 'a', 'create promise', 'b', 'c', 'timeout'
+// создание промиса - СИНХРОННАЯ ФУНКЦИЯ, поэтому она сразу попадет в стэк выполнения
