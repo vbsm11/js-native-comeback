@@ -1,16 +1,32 @@
 // eventloop
 
-console.log('a')
-
-setTimeout(() => {
-    console.log('timeout')
-}, 1000)
-
-console.log('b')
-
-console.log('c')
+// console.log('a')
+//
+// setTimeout(() => {
+//     console.log('timeout')
+// }, 1000)
+//
+// console.log('b')
+//
+// console.log('c')
 // порядок срабатывания - 'a', 'b', 'c', 'timeout'
-// стэк вызова работает по принципу 'последний пришел первый ушел' (так же принцип называется stack, lifo) в случае если, например одна ф-ция вызывает другую, другая третью и тд
+
+
+function a() {
+    b()
+    console.log('a')
+}
+
+function b() {
+    c()
+    console.log('b')
+}
+
+function c() {
+    console.log('c')
+}
+// порядок вывода - 'c', 'b', 'a'
+// стэк вызова работает по принципу 'последний пришел первый ушел' (так же принцип называется stack, lifo) в случае если, например, одна ф-ция вызывает другую, другая третью и тд
 // в js только один стэк выполнения
 
 // a, b, c в данном случае срабатывают по очереди и уходят из стэка сразу
@@ -19,32 +35,32 @@ console.log('c')
 
 
 
-console.log('a')
-
-setTimeout(() => {
-    console.log('timeout1')
-}, 1000)
-
-setTimeout(() => {
-    console.log('timeout2')
-}, 0)
-
-console.log('b')
+// console.log('a')
+//
+// setTimeout(() => {
+//     console.log('timeout1')
+// }, 1000)
+//
+// setTimeout(() => {
+//     console.log('timeout2')
+// }, 0)
+//
+// console.log('b')
 // порядок срабатывания - 'a', 'b', 'timeout2', 'timeout1'
 
 
 
-setTimeout(() => {
-    console.log('timeout1')
-}, 1000)
-
-setTimeout(() => {
-    console.log('timeout2')
-}, 1000)
-
-setTimeout(() => {
-    console.log('timeout3')
-}, 1000)
+// setTimeout(() => {
+//     console.log('timeout1')
+// }, 1000)
+//
+// setTimeout(() => {
+//     console.log('timeout2')
+// }, 1000)
+//
+// setTimeout(() => {
+//     console.log('timeout3')
+// }, 1000)
 // порядок срабатывания - 'timeout1', 'timeout2', 'timeout3'
 // порядок сохраняется, т.к они отправляются на web apis по порядку с разницей в долю секунды
 
@@ -62,3 +78,5 @@ setTimeout(() => {
 
 // eventloop обращается к этим очередям только когда стек вызова пуст
 // в целом, eventloop - это некий цикл, который следит за всеми этими очередями
+
+
