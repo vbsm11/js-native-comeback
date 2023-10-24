@@ -127,19 +127,54 @@
 // так как web api отдает в очередь setTimeout только после отсчета самого таймаута, то они будут срабатывать он меньшего таймаута к большему (при равных таймаутах - по порядку объявления в коде)
 
 
-setTimeout(function timer() {
-    console.log(1)
-}, 0)
-
-new Promise(function (res, rej) {
-    console.log(2)
-    res()
-}).then(() => {
-    console.log(3)
-})
-
-console.log(4)
+// setTimeout(function timer() {
+//     console.log(1)
+// }, 0)
+//
+// new Promise(function (res, rej) {
+//     console.log(2)
+//     res()
+// }).then(() => {
+//     console.log(3)
+// })
+//
+// console.log(4)
 // порядок 2 4 3 1
 // создание промиса и логирование - синхронные функции - вызовутся по порядку
 // setTimeOut и then сначала отправятся на web apis, откуда в свои очереди
 // в очередях первым будет then, т.к это микротаска (срабатывание промиса)
+
+
+
+setTimeout(() => {
+    console.log('s1')
+}, 0)
+
+setTimeout(() => {
+    console.log('s2')
+}, 1000)
+
+new Promise(function (res, rej) {
+    console.log('p1')
+    res()
+    console.log('p2')
+}).then(() => {
+    console.log('p3')
+})
+
+console.log('w1')
+
+async function test1() {
+    console.log('a1')
+    await test2() // test2.then(() => { - АНАЛОГИЧНО
+    console.log('a2')
+}
+
+async function test2() {
+    console.log('a3')
+}
+
+test1()
+
+console.log('w2')
+// p1 -> p2 -> w1 -> a1 -> a3 -> w2 -> p3 -> a2 -> s1 -> s2
