@@ -105,6 +105,19 @@ f1()
 
 
 
+// 4 functions constructors
+
+function Car(color) {
+    // {}
+    this.color = color
+    // return this
+}
+
+const newCar = new Car('red') // this всегда будет ссылаться на новый объект, который будет создаваться при помощи ключевого слова new
+console.log(newCar)
+
+
+
 
 
 
