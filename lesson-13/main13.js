@@ -4,3 +4,7 @@
 // 2. Function (simple func | arrow func =>)
 // 3. Call, apply, bind
 // 4. Functions Constructors
+
+
+// 1.
+console.log(this) // window
