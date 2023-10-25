@@ -48,3 +48,25 @@ function func1() {
 window.func1()
 // если у стрелочный функций this зависит от того, где функция была определена
 // , то в классической функции - от того, где она была вызвана (в данном случае window)
+
+const car1 = {
+    speed: 200
+}
+
+const car2 = {
+    speed: 220
+}
+
+function showSpeed() {
+    console.log(this.speed)
+}
+
+car1.f = showSpeed
+car2.f = showSpeed
+
+car1.f()
+car2.f()
+
+
+
+
